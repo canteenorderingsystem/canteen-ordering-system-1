@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#121110">
+    <title>Kitchen Display · Kain Na!</title>
+    <meta name="description" content="Live kitchen display for incoming canteen orders.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="kitchen.css">
+</head>
+<body class="kitchen-body">
+
+<div class="k-orb k-orb-a" aria-hidden="true"></div>
+<div class="k-orb k-orb-b" aria-hidden="true"></div>
+
+<header class="k-header">
+    <div class="k-shell k-header-inner">
+        <a class="k-brand" href="kitchen.html" aria-label="Kain Na! Kitchen Display">
+            <span class="k-brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4.5 11.5h15a7.5 7.5 0 0 1-15 0Z"/>
+                    <path d="M8 7.5c0-1.2.9-1.7.9-2.8M12 7.5c0-1.2.9-1.7.9-2.8M16 7.5c0-1.2.9-1.7.9-2.8"/>
+                </svg>
+            </span>
+            <span class="k-brand-text">
+                <strong>Kain Na!</strong>
+                <small>Kitchen Display</small>
+            </span>
+        </a>
+
+        <div class="k-header-meta">
+            <span class="k-live" id="liveStatus">
+                <span class="k-live-dot" aria-hidden="true"></span>
+                <span id="liveLabel">Live</span>
+            </span>
+            <div class="k-clock">
+                <strong id="clockTime">--:--</strong>
+                <span id="clockDate">—</span>
+            </div>
+        </div>
+
+        <div class="k-header-actions">
+            <button class="k-icon-btn" id="soundBtn" type="button" aria-pressed="false"
+                    title="Enable new-order sound">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 10v4h3l4 3.2V6.8L8 10H5Z"/>
+                    <path class="sound-wave" d="M15.4 9.2a4 4 0 0 1 0 5.6M17.6 6.6a7.7 7.7 0 0 1 0 10.8"/>
+                    <path class="sound-slash" d="m4 4 16 16"/>
+                </svg>
+            </button>
+
+            <button class="k-icon-btn" id="refreshBtn" type="button" title="Refresh orders">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M20 11a8 8 0 1 0-2.3 5.7M20 5v6h-6"/>
+                </svg>
+            </button>
+
+            <button class="k-icon-btn" id="fullscreenBtn" type="button" title="Toggle fullscreen">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5"/>
+                </svg>
+            </button>
+
+            <a class="k-menu-link" href="index.html">
+                <span class="k-menu-link-text">Student menu</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M7 17 17 7M8 7h9v9"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</header>
+
+<main class="k-shell k-main">
+    <section class="k-titlebar" aria-labelledby="pageTitle">
+        <div class="k-titlebar-copy">
+            <span class="k-eyebrow">Front of house</span>
+            <h1 id="pageTitle">Today's orders</h1>
+            <p>Keep the queue moving. New orders appear here automatically.</p>
+        </div>
+        <div class="k-titlebar-side">
+            <span class="k-updated" id="lastUpdated">Connecting…</span>
+            <span class="k-next">Next up <strong id="nextQueue">#1</strong></span>
+        </div>
+    </section>
+
+    <section class="k-stats" aria-label="Order statistics">
+        <article class="k-stat k-stat-active">
+            <div class="k-stat-top">
+                <span>In queue</span>
+                <span class="k-stat-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 6h16M4 12h16M4 18h10"/>
+                    </svg>
+                </span>
+            </div>
+            <strong id="statActive">0</strong>
+            <small>active orders</small>
+        </article>
+
+        <article class="k-stat k-stat-pending">
+            <div class="k-stat-top">
+                <span>Pending</span>
+                <span class="k-stat-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="8.5"/>
+                        <path d="M12 7.5V12l3 1.8"/>
+                    </svg>
+                </span>
+            </div>
+            <strong id="statPending">0</strong>
+            <small>waiting to start</small>
+        </article>
+
+        <article class="k-stat k-stat-preparing">
+            <div class="k-stat-top">
+                <span>Preparing</span>
+                <span class="k-stat-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3c1.2 2.2.4 3.4-.4 4.7-.7 1.2-1.4 2.6-.2 4.3M7.5 21h9M8 17h8a4 4 0 0 0 0-8h-.4A4.6 4.6 0 0 0 8 12"/>
+                    </svg>
+                </span>
+            </div>
+            <strong id="statPreparing">0</strong>
+            <small>on the line</small>
+        </article>
+
+        <article class="k-stat k-stat-ready">
+            <div class="k-stat-top">
+                <span>Ready</span>
+                <span class="k-stat-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m5 12 4.5 4.5L19 7"/>
+                    </svg>
+                </span>
+            </div>
+            <strong id="statReady">0</strong>
+            <small>for pickup</small>
+        </article>
+
+        <article class="k-stat k-stat-served">
+            <div class="k-stat-top">
+                <span>Served</span>
+                <span class="k-stat-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 7h16l-1.5 12h-13L4 7ZM8 7V5a4 4 0 0 1 8 0v2"/>
+                    </svg>
+                </span>
+            </div>
+            <strong id="statServed">0</strong>
+            <small>completed orders</small>
+        </article>
+    </section>
+
+    <section class="k-controls">
+        <div class="k-tabs" id="statusTabs" role="tablist" aria-label="Filter orders by status"></div>
+
+        <label class="k-search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="7"/>
+                <path d="m16.5 16.5 4 4"/>
+            </svg>
+            <input id="searchInput" type="search" placeholder="Search queue no., name or item"
+                   autocomplete="off" aria-label="Search orders">
+        </label>
+    </section>
+
+    <section class="k-grid" id="ordersGrid"></section>
+</main>
+
+<footer class="k-footer k-shell">
+    <p><span class="k-live-dot" aria-hidden="true"></span> Auto-refreshing every 5 seconds</p>
+    <p>Kain Na! Canteen <span aria-hidden="true">·</span> Kitchen Display</p>
+</footer>
+
+<div class="k-toast" id="kToast" role="status" aria-live="polite">
+    <span class="k-toast-dot" aria-hidden="true"></span>
+    <span id="kToastText"></span>
+</div>
+
+<script src="kitchen.js"></script>
+</body>
+</html>

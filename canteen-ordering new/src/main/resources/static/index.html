@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FFF8F1">
+    <title>Kain Na! · Canteen Menu</title>
+    <meta name="description" content="Browse today's canteen menu, build your tray and skip the line.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ambient ambient-a" aria-hidden="true"></div>
+<div class="ambient ambient-b" aria-hidden="true"></div>
+<div class="ambient ambient-c" aria-hidden="true"></div>
+
+<header class="site-header" id="siteHeader">
+    <div class="shell header-inner">
+        <a class="brand" href="#top" aria-label="Kain Na! Canteen home">
+            <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4.5 11.5h15a7.5 7.5 0 0 1-15 0Z"/>
+                    <path d="M8 7.5c0-1.2.9-1.7.9-2.8M12 7.5c0-1.2.9-1.7.9-2.8M16 7.5c0-1.2.9-1.7.9-2.8"/>
+                </svg>
+            </span>
+            <span class="brand-text">
+                <strong>Kain Na!</strong>
+                <small>Canteen</small>
+            </span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="#menu" class="nav-link is-active">Menu</a>
+            <a href="kitchen.html" class="nav-link">
+                Kitchen display
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M7 17 17 7M8 7h9v9"/>
+                </svg>
+            </a>
+        </nav>
+
+        <div class="header-actions">
+            <span class="open-pill">
+                <span class="live-dot" aria-hidden="true"></span>
+                Open today · 7am–6pm
+            </span>
+            <button class="icon-btn cart-trigger" id="cartTrigger" type="button" aria-label="Open your tray">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 8h12l-1 11H7L6 8Z"/>
+                    <path d="M9 8V6a3 3 0 0 1 6 0v2"/>
+                </svg>
+                <span class="cart-count" id="headerCartCount">0</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main id="top">
+
+    <section class="hero shell" aria-labelledby="heroTitle">
+        <div class="hero-copy">
+            <span class="eyebrow">
+                <span class="eyebrow-dot" aria-hidden="true"></span>
+                Today at the canteen
+            </span>
+
+            <h1 id="heroTitle">
+                Good food,
+                <span class="gradient-text">good mood.</span>
+            </h1>
+
+            <p class="hero-lede">
+                Skip the line, pick your favorites, and we'll have it hot and ready.
+                Freshly cooked Filipino classics, every single day.
+            </p>
+
+            <div class="hero-actions">
+                <a class="btn btn-primary" href="#menu">
+                    Browse the menu
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M5 12h14M13 6l6 6-6 6"/>
+                    </svg>
+                </a>
+                <a class="btn btn-ghost" href="kitchen.html">
+                    <span class="btn-status-dot" aria-hidden="true"></span>
+                    Kitchen display
+                </a>
+            </div>
+
+            <dl class="hero-stats">
+                <div>
+                    <dt>Dishes today</dt>
+                    <dd>5</dd>
+                </div>
+                <div>
+                    <dt>Average prep</dt>
+                    <dd>~8<small>min</small></dd>
+                </div>
+                <div>
+                    <dt>Freshly made</dt>
+                    <dd>100<small>%</small></dd>
+                </div>
+            </dl>
+        </div>
+
+        <aside class="qr-card" aria-labelledby="qrTitle">
+            <span class="qr-sticker">Fresh daily</span>
+
+            <div class="qr-card-top">
+                <span class="mini-label">Skip the line</span>
+                <span class="wifi-chip">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M3 9a15 15 0 0 1 18 0M6 12.5a10 10 0 0 1 12 0M9.5 16a5 5 0 0 1 5 0"/>
+                        <circle cx="12" cy="19" r=".9" fill="currentColor" stroke="none"/>
+                    </svg>
+                    Same Wi-Fi
+                </span>
+            </div>
+
+            <h2 id="qrTitle">Scan &amp; order<br>from your phone</h2>
+
+            <div class="qr-frame">
+                <span class="qr-corner tl" aria-hidden="true"></span>
+                <span class="qr-corner tr" aria-hidden="true"></span>
+                <span class="qr-corner bl" aria-hidden="true"></span>
+                <span class="qr-corner br" aria-hidden="true"></span>
+
+                <div class="qr-canvas">
+                    <div class="qr-skeleton" id="qrSkeleton" aria-hidden="true"></div>
+                    <img id="qrImage" alt="QR code that opens the canteen menu on a phone"
+                         width="400" height="400" decoding="async">
+                </div>
+            </div>
+
+            <div class="qr-url-row">
+                <code id="qrUrl">Connecting…</code>
+                <button class="icon-btn copy-btn" id="copyUrlBtn" type="button" aria-label="Copy menu link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="9" y="9" width="11" height="11" rx="2.5"/>
+                        <path d="M15 5.5A2.5 2.5 0 0 0 12.5 3H6a2.5 2.5 0 0 0-2.5 2.5V12A2.5 2.5 0 0 0 6 14.5"/>
+                    </svg>
+                </button>
+            </div>
+            <p class="qr-note" id="qrNote">Point your camera here to open the menu on your phone.</p>
+        </aside>
+    </section>
+
+    <section class="menu-section shell" id="menu" aria-labelledby="menuTitle">
+        <div class="section-heading">
+            <div class="heading-copy">
+                <span class="eyebrow">Today's line-up</span>
+                <h2 id="menuTitle">What's cooking</h2>
+                <p>House favorites, made fresh. Build your tray and we'll take it from there.</p>
+            </div>
+            <div class="menu-count-pill">
+                <span class="live-dot" aria-hidden="true"></span>
+                <span id="menuCount">Loading menu…</span>
+            </div>
+        </div>
+
+        <div class="menu-toolbar">
+            <div class="filter-chips" id="categoryFilters" role="group" aria-label="Filter menu by category"></div>
+            <button class="refresh-btn" id="refreshMenuBtn" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M20 11a8 8 0 1 0-2.3 5.7M20 5v6h-6"/>
+                </svg>
+                Refresh
+            </button>
+        </div>
+
+        <div class="menu-layout">
+            <div class="menu-grid" id="menuGrid" aria-live="polite" aria-busy="true"></div>
+
+            <aside class="cart-panel" id="cartPanel" aria-labelledby="cartTitle">
+                <div class="cart-head">
+                    <div>
+                        <span class="mini-label">Order summary</span>
+                        <h3 id="cartTitle">
+                            Your tray
+                            <span class="cart-badge" id="cartBadge">0</span>
+                        </h3>
+                    </div>
+                    <button class="icon-btn cart-close" id="cartCloseBtn" type="button" aria-label="Close tray">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" aria-hidden="true">
+                            <path d="m6 6 12 12M18 6 6 18"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="cart-items" id="cartItems"></div>
+
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="cartSubtotal">₱0.00</span>
+                    </div>
+                    <div class="summary-row summary-total">
+                        <span>Total</span>
+                        <strong id="cartTotal">₱0.00</strong>
+                    </div>
+                    <p class="summary-hint">No service fee. Pay at the counter.</p>
+
+                    <label class="field">
+                        <span>Your name <em>optional</em></span>
+                        <input id="customerName" name="customerName" type="text" maxlength="60"
+                               placeholder="e.g. Maya" autocomplete="name">
+                    </label>
+
+                    <label class="field">
+                        <span>Notes <em>optional</em></span>
+                        <input id="orderNotes" name="orderNotes" type="text" maxlength="500"
+                               placeholder="Less rice, no onions…" autocomplete="off">
+                    </label>
+
+                    <button class="btn btn-primary place-order-btn" id="placeOrderBtn" type="button" disabled>
+                        <span id="placeOrderLabel">Place order</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M5 12h14M13 6l6 6-6 6"/>
+                        </svg>
+                    </button>
+                    <p class="secure-note">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="5" y="10" width="14" height="10" rx="2.5"/>
+                            <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+                        </svg>
+                        Your order goes straight to the kitchen.
+                    </p>
+                </div>
+            </aside>
+        </div>
+    </section>
+</main>
+
+<div class="mobile-cart-bar" id="mobileCartBar">
+    <div class="mobile-cart-info">
+        <span id="mobileCount">0 items</span>
+        <strong id="mobileTotal">₱0.00</strong>
+    </div>
+    <button class="btn btn-primary" id="mobileCartBtn" type="button">View tray</button>
+</div>
+
+<div class="backdrop" id="backdrop" aria-hidden="true"></div>
+
+<div class="success-modal" id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+    <div class="success-card">
+        <span class="confetti-dot c1" aria-hidden="true"></span>
+        <span class="confetti-dot c2" aria-hidden="true"></span>
+        <span class="confetti-dot c3" aria-hidden="true"></span>
+        <span class="confetti-dot c4" aria-hidden="true"></span>
+
+        <button class="icon-btn modal-close" id="successCloseBtn" type="button" aria-label="Close confirmation">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" aria-hidden="true">
+                <path d="m6 6 12 12M18 6 6 18"/>
+            </svg>
+        </button>
+
+        <div class="success-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="m5 12 4.5 4.5L19 7"/>
+            </svg>
+        </div>
+
+        <span class="mini-label">Order confirmed</span>
+        <h2 id="successTitle">You're in the queue!</h2>
+
+        <div class="queue-circle">
+            <span>Queue</span>
+            <strong id="successQueue">#1</strong>
+            <small id="successOrdinal">1st customer</small>
+        </div>
+
+        <p class="success-copy">
+            Thanks <span id="successName">friend</span>! We'll call your number when it's ready.
+        </p>
+
+        <div class="success-meta">
+            <div>
+                <span>Items</span>
+                <strong id="successItems">0</strong>
+            </div>
+            <div>
+                <span>Total</span>
+                <strong id="successTotal">₱0.00</strong>
+            </div>
+            <div>
+                <span>Est. wait</span>
+                <strong>~8 min</strong>
+            </div>
+        </div>
+
+        <div class="success-actions">
+            <button class="btn btn-primary" id="successDone" type="button">Order more</button>
+            <a class="btn btn-ghost" href="kitchen.html" target="_blank" rel="noopener">Kitchen board</a>
+        </div>
+    </div>
+</div>
+
+<div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="false"></div>
+
+<footer class="site-footer shell">
+    <div class="footer-top">
+        <a class="brand brand-small" href="#top" aria-label="Kain Na! Canteen home">
+            <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4.5 11.5h15a7.5 7.5 0 0 1-15 0Z"/>
+                    <path d="M8 7.5c0-1.2.9-1.7.9-2.8M12 7.5c0-1.2.9-1.7.9-2.8M16 7.5c0-1.2.9-1.7.9-2.8"/>
+                </svg>
+            </span>
+            <span class="brand-text"><strong>Kain Na!</strong><small>Canteen</small></span>
+        </a>
+
+        <nav class="footer-links" aria-label="Footer navigation">
+            <a href="#menu">Menu</a>
+            <a href="kitchen.html">Kitchen display</a>
+            <a href="/h2-console" target="_blank" rel="noopener">Database</a>
+        </nav>
+    </div>
+    <div class="footer-bottom">
+        <p>Made with <span aria-hidden="true">♥</span> for hungry students.</p>
+        <p>© <span id="year">2026</span> Kain Na! Canteen</p>
+    </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
